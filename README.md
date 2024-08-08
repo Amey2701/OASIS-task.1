@@ -20,11 +20,11 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/temperature-converter.git
+    git clone https://github.com/your-username/OASIS-task.1.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd temperature-converter
+    cd OASIS-task.1
     ```
 3. Open the `index.html` file in your preferred web browser.
 
