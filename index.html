@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- The document type declaration specifies the HTML version. The "lang" attribute specifies the language of the document. -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- Specifies the character encoding for the HTML document. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the viewport to control the page's dimensions and scaling on different devices. -->
     <title>Temperature Converter</title>
+    <!-- Sets the title of the webpage, which appears in the browser tab. -->
+
     <style>
         * {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Resets margin and padding for all elements and sets a consistent font family. */
         }
 
         @keyframes gradient {
             0% {
                 background-position: 0% 50%;
             }
-
             50% {
                 background-position: 100% 50%;
             }
-
             100% {
                 background-position: 0% 50%;
             }
+            /* Defines an animation that changes the background position to create a moving gradient effect. */
         }
 
         body {
@@ -34,6 +39,7 @@
             background: linear-gradient(270deg, #89f7fe, #66a6ff);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
+            /* Styles the body to center its content, fill the viewport height, and animate a gradient background. */
         }
 
         .container {
@@ -44,6 +50,7 @@
             padding: 40px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             text-align: center;
+            /* Styles the container with a max width, background color, rounded corners, padding, shadow, and centered text. */
         }
 
         .container h1 {
@@ -51,10 +58,12 @@
             font-weight: 700;
             font-size: 32px;
             margin-bottom: 20px;
+            /* Styles the h1 element inside the container with color, font weight, size, and margin below. */
         }
 
         .form-group {
             margin-bottom: 20px;
+            /* Adds a margin below each form group for spacing. */
         }
 
         label {
@@ -63,6 +72,7 @@
             margin-bottom: 10px;
             color: #fff;
             display: block;
+            /* Styles the label with font size, weight, color, and forces it to be displayed as a block-level element. */
         }
 
         input,
@@ -74,12 +84,14 @@
             font-size: 16px;
             text-align: center;
             margin-top: 10px;
+            /* Styles input and select elements with width, padding, rounded corners, no border, centered text, and margin above. */
         }
 
         .button-group {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
+            /* Arranges buttons side by side with space between them and adds a margin above. */
         }
 
         button {
@@ -91,31 +103,37 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
+            /* Styles buttons with width, padding, rounded corners, no border, font settings, cursor change on hover, and smooth transitions for color changes. */
         }
 
         .convert-button {
             background-color: #4CAF50;
             color: white;
+            /* Sets the background color and text color for the convert button. */
         }
 
         .convert-button:hover {
             background-color: #45a049;
+            /* Changes the background color on hover for the convert button. */
         }
 
         .clear-button {
             background-color: transparent;
             color: #f2ecec;
             border: 2px solid #f10b0b;
+            /* Sets the background, text color, and border for the clear button. */
         }
 
         .clear-button:hover {
             background-color: #f00a0a;
             color: #fff;
+            /* Changes the background and text color on hover for the clear button. */
         }
 
         .clear-button:active {
             background-color: #eb0d0d;
             border-color: #555;
+            /* Styles the clear button when it is actively pressed. */
         }
 
         .result {
@@ -123,70 +141,108 @@
             font-size: 20px;
             font-weight: 600;
             color: #fff;
+            /* Styles the result text with margin, font size, weight, and color. */
         }
     </style>
 </head>
 
 <body>
     <div class="container">
+        <!-- Main container that holds all content. -->
         <h1>Temperature Converter</h1>
+        <!-- Page title inside the container. -->
+
         <div class="form-group">
             <label for="temperature">Enter Temperature</label>
+            <!-- Label for the temperature input. -->
             <input type="number" id="temperature" placeholder="Enter a number">
+            <!-- Input field for entering temperature, restricted to numeric input. -->
         </div>
+
         <div class="form-group">
             <label for="unit">Select Unit</label>
+            <!-- Label for the unit selection. -->
             <select id="unit">
+                <!-- Dropdown for selecting the temperature unit. -->
                 <option value="">Choose from here!!!</option>
+                <!-- Default option prompting the user to choose. -->
                 <option value="Celsius">Celsius</option>
                 <option value="Fahrenheit">Fahrenheit</option>
                 <option value="Kelvin">Kelvin</option>
+                <!-- Options for temperature units. -->
             </select>
         </div>
+
         <div class="button-group">
             <button id="convertButton" class="convert-button">Convert</button>
+            <!-- Convert button to trigger the conversion. -->
             <button id="clearButton" class="clear-button">Clear</button>
+            <!-- Clear button to reset the input and result. -->
         </div>
+
         <div class="result" id="result"></div>
+        <!-- Div to display the conversion result. -->
     </div>
 
     <script>
         document.getElementById('convertButton').onclick = function () {
+            // Event listener for the Convert button click.
             let temperature = parseFloat(document.getElementById('temperature').value);
+            // Retrieves the temperature value and converts it to a float.
             let unit = document.getElementById('unit').value;
+            // Retrieves the selected unit.
             let resultText = '';
 
             if (isNaN(temperature)) {
                 resultText = 'Please enter a valid number for temperature.';
+                // Checks if the input is not a number, and displays an error message.
             } else if (unit === "") {
                 resultText = 'Please select a unit.';
+                // Checks if the unit is not selected, and displays an error message.
             } else {
                 switch (unit) {
                     case 'Celsius':
+                        // If the unit is Celsius:
                         let fahrenheitFromCelsius = (temperature * 9 / 5) + 32;
+                        // Converts Celsius to Fahrenheit.
                         let kelvinFromCelsius = temperature + 273.15;
+                        // Converts Celsius to Kelvin.
                         resultText = `${temperature}°C is equal to ${fahrenheitFromCelsius.toFixed(2)}°F or ${kelvinFromCelsius.toFixed(2)}K.`;
+                        // Formats and sets the result text.
                         break;
                     case 'Fahrenheit':
+                        // If the unit is Fahrenheit:
                         let celsiusFromFahrenheit = (temperature - 32) * 5 / 9;
+                        // Converts Fahrenheit to Celsius.
                         let kelvinFromFahrenheit = (temperature - 32) * 5 / 9 + 273.15;
+                        // Converts Fahrenheit to Kelvin.
                         resultText = `${temperature}°F is equal to ${celsiusFromFahrenheit.toFixed(2)}°C or ${kelvinFromFahrenheit.toFixed(2)}K.`;
+                        // Formats and sets the result text.
                         break;
                     case 'Kelvin':
+                        // If the unit is Kelvin:
                         let celsiusFromKelvin = temperature - 273.15;
+                        // Converts Kelvin to Celsius.
                         let fahrenheitFromKelvin = (temperature - 273.15) * 9 / 5 + 32;
+                        // Converts Kelvin to Fahrenheit.
                         resultText = `${temperature}K is equal to ${celsiusFromKelvin.toFixed(2)}°C or ${fahrenheitFromKelvin.toFixed(2)}°F.`;
+                        // Formats and sets the result text.
                         break;
                 }
             }
 
             document.getElementById('result').innerText = resultText;
+            // Displays the result in the result div.
         };
 
         document.getElementById('clearButton').onclick = function () {
+            // Event listener for the Clear button click.
             document.getElementById('temperature').value = '';
+            // Clears the temperature input.
             document.getElementById('unit').value = '';
+            // Resets the unit selection.
             document.getElementById('result').innerText = '';
+            // Clears the result text.
         };
     </script>
 </body>
