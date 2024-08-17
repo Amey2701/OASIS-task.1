@@ -12,7 +12,7 @@ This project is a simple, responsive web application that allows users to conver
 
 ## Live Demo
 
-You can try out the live version of this application here: [Temperature Converter](https://amey2701.github.io/OASIS-task.1/)
+You can try out the live version of this application here: [Temperature Converter]([https://amey2701.github.io/OASIS-task.1/](https://amey2701.github.io/oibsip_taskno1/))
 
 ## Installation
 
