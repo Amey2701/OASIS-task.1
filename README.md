@@ -1,4 +1,4 @@
-# Temperature Converter
+# Temperature Converter Web Application
 
 This project is a simple, responsive web application that allows users to convert temperatures between Celsius, Fahrenheit, and Kelvin. The application is built using HTML, CSS, and JavaScript, and provides an interactive user interface with a smooth gradient background.
 
